@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<p:tooltip />
+		<h:form>
+			<!--<h:outputLabel value="#{m.oi}" for="btn" />-->
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			<h:selectOneMenu value="#{testBean.projeto}"
+				converter="entityConverter">
+				<f:selectItems value="#{testBean.projetos}" var="projeto"
+					itemLabel="#{projeto.nome}" itemValue="#{projeto}" />
+			</h:selectOneMenu>
+			<h:commandButton id="btn" action="#{testBean.construct()}"
+				value="Submit" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+
